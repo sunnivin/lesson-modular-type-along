@@ -1,28 +1,21 @@
 ---
 layout: episode
-title: Distributed version control and forking workflow
-teaching: 20
-exercises: 40
+title: Code review with GitHub exercise
+teaching: 10
+exercises: 50
 questions:
-  - How can we collaborate with people who we might not know yet?
-  - What is a fork?
-  - What is a pull request or merge request?
+  - How can we collaborate with others within one repository?
   - What is code review?
   - How do teams collaborate on GitHub or GitLab or Bitbucket?
 objectives:
   - Get a mental representation of what is happening on GitHub.
   - Get comfortable with the forking workflow.
 keypoints:
-  - Working with multiple remotes is not as scary as it looks.
-  - "`origin` is just an alias."
-  - We can add and remove remotes.
-  - We can call these aliases as we like.
-  - We synchronize remotes via the local clone.
-  - "To see all remotes use `git remote -v`."
-  - If you are more than one person contributing to a project, implement code review.
+  - Do a code review through the GitHub interface.
+  - Experience difficulties in beeing more than one person contributing to a project in pracsis
 ---
 
-## Distributed version control and forking workflow
+## Code review with GitHub exercise
 
 ### Forking layout
 
@@ -103,7 +96,7 @@ $ git remote --verbose
 > - Create an exercise repository by
 >   [generating from a template](https://help.github.com/en/articles/creating-a-repository-from-a-template)
 >   using this template: <https://github.com/coderefinery/template-forking-workflow-exercise>
-> - In this case we **do not add collaborators** to the repository (this is the point of this example). 
+> - In this case we **do not add collaborators** to the repository (this is the point of this example).
 > - Share the link to the newly created repository in the shared document with your group.
 >
 > **Learners in breakout-rooms**: Fork the helper's newly created repository and clone the fork.

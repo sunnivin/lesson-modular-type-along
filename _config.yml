@@ -1,6 +1,6 @@
 fork_me_ribbon_url: https://github.com/coderefinery/git-collaborative
-baseurl: "/git-code-review"
-title: "Code review"
+baseurl: "/modular-type-along"
+title: "Modular type along"
 centralized_workflow_exercise_url: https://github.com/coderefinery/centralized-workflow-exercise
 forking_workflow_exercise_url: https://github.com/coderefinery/forking-workflow-exercise
 
