@@ -1,65 +1,58 @@
 ---
 layout: episode
-title: Code review with GitHub exercise
+title: python exercise
 teaching: 10
 exercises: 50
 questions:
-  - How can we collaborate with others within one repository?
-  - What is code review?
-  - How do teams collaborate on GitHub or GitLab or Bitbucket?
+  - How can we generalize our code development?
+  - Why should we design our code to be general ?
 objectives:
-  - Get a mental representation of what is happening on GitHub.
+  - Know about pure functions (functions without side effects, functions which given same input always return same output).
+  - Learn why and how to limit side effects of functions.
   - Get comfortable with the forking workflow.
 keypoints:
-  - Do a code review through the GitHub interface.
-  - Experience difficulties in beeing more than one person contributing to a project in pracsis
+  - Do a modular based code development following a template
+  - Experience difficulties in developing one-size-fit all
 ---
 
-## Code review with GitHub exercise
+## Modular type along exercise with GitHub
 
-### Forking layout
 
-![]({{ site.baseurl }}/img/forking/forking-overview.svg)
+## Our task
+Reflect around a typical development workflow in a small project. This example is in Python but we will try to see “through” the code and focus on the bigger picture and hopefully manage to imagine other languages in its place. For the Python experts: we will not see the most elegant Python.
 
-In the **forking layout**, again we call one repository the "central"
-repository but people push to **forks** (their own copies of the
-repository on GitHub/GitLab/Bitbucket).
+### Data
 
-Features:
+The file temperatures.csv contains hourly air temperature measurements for the time range November 1, 2019 12:00 AM - November 30, 2019 11:59 PM for the observation station “Vantaa Helsinki-Vantaan lentoasema”.
 
-- **Anybody can contribute without asking for permission.** (public projects)
-- Maintainer still has **full control over what is merged**.
-- There is now **more than one remote** to work with.
+Data obtained from https://en.ilmatieteenlaitos.fi/download-observations#!/ on 2019-12-09.
 
-Real life examples:
+## Initial goal
+Our initial goal for this exercise is to plot a series of temperatures for 25 measurements and to compute and plot the arithmetic mean. We imagine that we assemble a working script from various StackOverflow recommendations and arrive at this answer:
 
-- NumPy: [https://numpy.org/devdocs/dev/index.html](https://numpy.org/devdocs/dev/index.html)
-- [https://github.com/jupyterlab/jupyterlab](https://github.com/jupyterlab/jupyterlab)
+``` python
+import pandas as pd
+from matplotlib import pyplot as plt
 
----
+num_measurements = 25
 
-### Working with multiple remotes
+# read data from file
+data = pd.read_csv('temperatures.csv', nrows=num_measurements)
+temperatures = data['Air temperature (degC)']
 
-- There is nothing special about the name `origin`. The `origin` is just an alias.
-- We can call these aliases as we like.
-- We can add and remove remotes:
+# compute statistics
+mean = sum(temperatures)/num_measurements
 
-```shell
-$ git remote add upstream https://github.com/project/project.git
-$ git remote rm upstream
-$ git remote add group-repo https://example.com/exciting-project.git
-$ git remote rm group-repo
-$ git remote add upstream https://github.com/project/project.git
-$ git remote add downstream https://github.com/userX/project.git
+# plot results
+plt.plot(temperatures, 'r-')
+plt.axhline(y=mean, color='b', linestyle='--')
+plt.savefig('25.png')
+plt.clf()
 ```
 
-We synchronize remotes via the local clone.
 
-To see all remotes:
-
-```shell
-$ git remote --verbose
-```
+## Final goal
+Our collaborators ask us to continue the code development to generalize the coding steps. Once we get this working for 25 measurements, our task changes to also plot the first 100 and the first 500 measurements in two additional plots.
 
 ---
 
@@ -72,80 +65,86 @@ $ git remote --verbose
   </p>
 </div>
 
-> ## Exercise: practice collaborative forking workflow
->
-> As an example we will collaboratively develop a cookbook for taco recipes,
-> inspired by [tacofancy](https://github.com/sinker/tacofancy).
->
-> Objectives:
-> - Learn how to fork, modify the fork, and file a pull request towards the forked repo.
-> - Learn how to update your fork with upstream changes.
->
-> Exercise:
-> - Helper prepares an exercise repository (see below; this will take 5-10 minutes).
-> - **The exercise group works on steps A-E** (15-20 minutes).
-> - There are two optional steps after step E for those who want more steps.
-> - After step E you can return to the main room. Please ask questions.
-> - **We do step F and G together** (instructor demonstrates, and everybody follows along in their repositories).
-> - If there is a lot of time left, step G can be done back in an exercise room.
-{: .challenge}
 
 > ## Exercise preparation
 >
 > **Helpers in breakout-rooms**:
 > - Create an exercise repository by
 >   [generating from a template](https://help.github.com/en/articles/creating-a-repository-from-a-template)
->   using this template: <https://github.com/coderefinery/template-forking-workflow-exercise>
+>   using this template: <https://github.com/sunnivin/module-based-type-along>
 > - In this case we **do not add collaborators** to the repository (this is the point of this example).
 > - Share the link to the newly created repository in the shared document with your group.
 >
-> **Learners in breakout-rooms**: Fork the helper's newly created repository and clone the fork.
->
-> **Instructor**: Prepare an exercise repository for participants following via stream (see below).
->
-> **Learners following via stream**: Fork [this repository]({{ site.forking_workflow_exercise_url }})
-> into your namespace and then clone the
-> fork to your computer.
+> **Learners in breakout-rooms**:
+> - Fork the helper's newly created repository and clone the fork.
 {: .prereq}
 
-
-### Step A: Fork and clone
-
-Here is a pictorial representation of this part:
-
-![]({{ site.baseurl }}/img/forking/forking-1.svg)
-
-This is how it looks after we fork:
-
-*central*: ![]({{ site.baseurl }}/img/forking/github-remote-01.svg)
-
-*fork*: ![]({{ site.baseurl }}/img/forking/github-remote-01.svg)
-
-- A fork is basically a (bare) clone.
-- The upstream repo and the fork are in principle independent repositories.
-- When forking we copy all commits, all branches.
-
-After we clone the fork we have three in principle independent repositories:
-
-*central*: ![]({{ site.baseurl }}/img/forking/github-remote-01.svg)
-
-*fork*: ![]({{ site.baseurl }}/img/forking/github-remote-01.svg)
-
-*local*: ![]({{ site.baseurl }}/img/forking/github-local-01.svg)
+> ## Exercise: practice collaborative forking workflow
+>
+> We will collaboratively develop a module based python code
+>
+> Objectives:
+> - Repeat how to fork and modify the fork.
+> - Learn the advantages with modular based coding.
+>
+> Exercise:
+> - Helper prepares an exercise repository (see above; this will take 5-10 minutes).
+> - **The exercise group works on steps A-E** (15-20 minutes).
+> - After step E you can return to the main room. Please ask questions.
+> - **We do step F and G together** (instructor demonstrates, and everybody follows along in their repositories).
+> - If there is a lot of time left, step G can be done back in an exercise room.
+{: .challenge}
 
 
-### Step B: Open an "issue" as a change proposal
 
-Before we start any coding, open a new "Issue" on the central repository as a
-"proposal" where you describe your idea for a recipe with the possibility to
-collect feedback from others. After creating this issue note the issue number.
-We will later refer to this issue number.
-
-Discuss with your neighbor why it can be useful to open an issue before
-starting the actual coding.
+### **Step A**: Fork and clone
 
 
-### Step C: Modify and commit
+Wait for the helper to share the repository for this exercise in the group chat.
+- Fork the helper's repository and  create a local clone.
+- cd into the folder where the local repository is and create the branch `module-based-development`.
+- Run the initial python script from the top folder in the repository:
+``` shell
+$ python src/initial.py
+```
+
+- Verify that the file 25.png is created in your top folder.
+
+
+### **Step B**: improve the plot
+Your supervisor ask you to improve the plot by adding labels to the plot.
+
+- Create the file `src/improvement.py` and add it to the repository.
+- Add labels to the plot by adding the following lines to `improvement.py`:
+
+``` python
+import pandas as pd
+from matplotlib import pyplot as plt
+
+
+plt.xlabel('measurements')
+plt.ylabel('air temperature (deg C)')
+
+
+num_measurements = 25
+
+# read data from file
+data = pd.read_csv('temperatures.csv', nrows=num_measurements)
+temperatures = data['Air temperature (degC)']
+
+# compute statistics
+mean = sum(temperatures)/num_measurements
+
+# plot results
+plt.plot(temperatures, 'r-')
+plt.axhline(y=mean, color='b', linestyle='--')
+plt.savefig('25.png')
+plt.clf()
+```
+- Verify that the axis are added in the file `25.png`. Stage the changes in `imporvement.py`.
+
+
+### **Step C**: increase the number of plotted measurements
 
 Before we do any modification, we create a new branch and switch to it: this is
 a good reflex and a good practice. Choose a branch name which is descriptive of
