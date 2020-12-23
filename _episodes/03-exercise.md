@@ -4,7 +4,7 @@ title: python exercise
 teaching: 10
 exercises: 50
 questions:
-  - Learn techniques for generalizing code development?
+  - Learn techniques for generalizing code development
   - What are the pros and cons for chosing general code design?
 objectives:
   - Know about pure functions (functions without side effects, functions which given same input always return same output).
@@ -12,7 +12,7 @@ objectives:
   - Get comfortable with the forking workflow.
 keypoints:
   - Do a modular based code development following a template.
-  - Experience difficulties in developing one-size-fit all.
+  - Experience difficulties in developing one-size-fit all strategy.
   - Repeat basic git-commands.
 ---
 
@@ -24,7 +24,7 @@ The file temperatures.csv contains hourly air temperature measurements for the t
 
 Data obtained from https://en.ilmatieteenlaitos.fi/download-observations#!/ on 2019-12-09.
 
-## Initial goal
+### Initial goal
 Our initial goal for this exercise is to plot a series of temperatures for 25 measurements and to compute and plot the arithmetic mean. We imagine that we assemble a working script from various StackOverflow recommendations and arrive at this answer:
 
 ``` python
@@ -70,7 +70,7 @@ Reflect around a typical development workflow in a small project. This example i
 > - Share the link to the newly created repository in the shared document with your group.
 >
 > **Learners in breakout-rooms**:
-> - Fork the helper's newly created repository and clone the fork.
+> - Fork the helper's newly created repository and clone the fork so you can work on your global copy.
 {: .prereq}
 
 > ## Exercise: modular type along with GitHub
@@ -78,15 +78,13 @@ Reflect around a typical development workflow in a small project. This example i
 > We will collaboratively develop a module based python code
 >
 > Objectives:
-> - Repeat how to fork and modify the fork.
-> - Learn the advantages with modular based coding.
+> - Repeat GitHub workflows (fork, commit, etc.)
+> - Learn the advantages of modular based coding.
 >
 > Exercise:
 > - Helper prepares an exercise repository (see above; this will take 5-10 minutes).
-> - **The exercise group works on steps A-E** (15-20 minutes).
-> - After step E you can return to the main room. Please ask questions.
-> - **We do step F and G together** (instructor demonstrates, and everybody follows along in their repositories).
-> - If there is a lot of time left, step G can be done back in an exercise room.
+> - **The exercise group works on steps A-F** (50 minutes).
+> - After step F you can return to the main room. Please ask questions.
 {: .challenge}
 
 

@@ -4,11 +4,11 @@ title: Thoughts after doing the exercise
 teaching: 15
 exercises: 5
 questions:
-  - What steps can we recommend to contribute changes to somebody else's project?
+  - What is a good workflow?
 objectives:
-  - Avoid frustration and surprises by first discussing and then coding.
+  - Undertand the point in following established practices for code development
 keypoints:
-  - Reflect around practices for code development after doing an example.
+  - Reflect around practices for code development after seeing an example.
 ---
 
 

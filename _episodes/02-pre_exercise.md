@@ -9,10 +9,7 @@ objectives:
   - Discuss best practices with collegues.
   - Introduce a a common strategy for code development.
 keypoints:
-  - Centralized workflow is often used for remote collaborative work.
-  - "`origin` refers to where you cloned from (but you can relocate it)."
-  - "`origin/mybranch` is a read-only pointer to branch `mybranch` on `origin`."
-  - "These read-only pointers only move when you `git fetch`/`git pull` or `git push`."
+  - Common reflections around code development.
 ---
 
 

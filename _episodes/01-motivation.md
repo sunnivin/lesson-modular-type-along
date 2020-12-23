@@ -14,21 +14,6 @@ keypoints:
   - “Global data structures” vs “local data structures”.
 ---
 
-## Motivation
-
-- You are working in a big project where several persons have contributed at different times in the code development
-- Someone has given you access to a repository online, you have developed some new functionalities and would like to contribute to the 'main' code by asking for a pull request or merge with master
-
-- ... and you want to contribute to it.
-- It is quite easy to make a copy and send a change back.
-- First, we do this a relatively simple way: get repository, make a change
-  locally, and send the change directly back.
-- Then, we make a "pull request" that allows a review.
-- Once we know how code review works, we will be able to propose changes
-  to repositories of others and review changes submitted by external
-  contributors.
-
----
 
 ## Presentation about modular code development
 
