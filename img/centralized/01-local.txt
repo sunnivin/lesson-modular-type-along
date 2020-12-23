@@ -1,3 +1,0 @@
-[origin/master,master,HEAD]
-|
-c1

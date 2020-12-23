@@ -1,9 +1,0 @@
-     [master,HEAD]
-      |
-c1----c2
-      | \
-      |  b1
-      |  |
-      |  [yourname-somefeature]
-      |
-      [origin/master]
