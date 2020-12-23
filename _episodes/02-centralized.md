@@ -31,10 +31,3 @@ keypoints:
 > > 5. Do you build your code top-down or bottom-up? Discuss pros and cons.
 > > 6. Would you prefer your code to be 2x slower if it was easier to read it?
 {: .discussion}
-
-
-
-<br>
-<br>
-<br>
-![]({{ site.baseurl }}/img/forking/remote.jpg)

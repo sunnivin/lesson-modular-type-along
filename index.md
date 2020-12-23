@@ -11,13 +11,13 @@ permalink: /
 *Image: taken from [i-programming](https://www.i-programmer.info/programming/theory/1332-goto-spaghetti-and-velociraptor.html)*
 <br>
 
-- How important is the program flow for your self?
+- How important is the program flow for yourself?
 - How important is the program flow for your collaborators?
 
 
 ## A standard for the program flow
 
-We have learned how to make a git repository for a single person and share it with several people. In this lesson we will combine this knowledge and use it to do a modular based code development. We will discover the pros of dividing our code into functions through a simple python script.
+We have learned how to make a git repository for a single person and share it with several people. In this lesson we will combine this knowledge and use it to do a modular-based code development. We will discover the pros of dividing our code into functions through a simple python script.
 
 > ## Prerequisites
 >
@@ -39,6 +39,6 @@ We have learned how to make a git repository for a single person and share it wi
 
 
 ## Sources
-This lesson is build on the material given in the following sources:
+This lesson builds on the material given in the following sources:
 - [Slides](https://cicero.xyz/v3/remark/0.14.0/github.com/coderefinery/modular-code-development/master/talk.md/#1) by Radovan Bast
 - [Modular type-along/demo](https://github.com/coderefinery/modular-type-along)
