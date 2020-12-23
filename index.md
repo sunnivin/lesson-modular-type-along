@@ -3,45 +3,26 @@ layout: lesson
 permalink: /
 ---
 
-# Collaborative feedback: code reviews
+# Modular based code development
 
-We have learned how to make a git repository for a single person and share it with several people. What about feedback?
+<br>
+![](/img/index/goto_spagetti.png)
 
-* Sharing by email or manually: isn't fun and doesn't scale, projects
-  are limited to the time and cognition of one person.
-* One person's repository on the web: allows one person to keep track
-  of more projects, gain visibility, feedback, and recognition.
-* Centralized: everyone can directly update the same repository.  Good
-  for small groups.
-* Distributed: anyone can suggest changes, even without advance
-  permission.  Maintainers approve what they agree with.
+*Image: taken from [i-programming](https://www.i-programmer.info/programming/theory/1332-goto-spaghetti-and-velociraptor.html)*
+<br>
 
-Being able to share more easily (going down the list here)
-is *transformative* because it allows projects to scale to a new
-level.  This can't be done without proper tools.
-
-In this lesson we will learn how to keep repositories in sync and how to work
-with remote repositories on GitHub and other services. We will discover
-and exercise the centralized as well as the forking workflows, and finally
-look into how to automate tasks using Git hooks.
+- How important is the program flow for your self?
+- How important is the program flow for your collaborators?
 
 
+## A standard for the program flow
 
-
-## Sources
-This lesson is build on the material given in the following sources
-
-- [ostrowski.ninja](https://ostrowski.ninja/code-review-practices/)
-- [The Overflow](https://stackoverflow.blog/2019/09/30/how-to-make-good-code-reviews-better/)
-- [Google Engineering Practices](https://github.com/google/eng-practices)
-
-
+We have learned how to make a git repository for a single person and share it with several people. In this lesson we will combine this knowledge and use it to do a modular based code development. We will discover the pros of dividing our code into functions through a simple python script.
 
 > ## Prerequisites
 >
 > 1. Basic understanding of Git.
 > 2. You need a [GitHub](https://github.com) account.
-> 3. You need a project which where it has been performed some work. For instance the modular code development.
 >
 > We will do this exercise on [GitHub](https://github.com) but also
 > [GitLab](https://gitlab.com) and [Bitbucket](https://bitbucket.org) allow
@@ -53,6 +34,11 @@ This lesson is build on the material given in the following sources
 > that you will interact with [GitHub](https://github.com)-based repositories even if you
 > choose to host your Git repository on another platform.
 >
-> We also encourage course participants to use our new [Nordic research software repository platform](https://source.coderefinery.org),
-> for more information see [https://coderefinery.org/repository/](http://coderefinery.org/repository/).
 {: .prereq}
+
+
+
+## Sources
+This lesson is build on the material given in the following sources:
+- [Slides](https://cicero.xyz/v3/remark/0.14.0/github.com/coderefinery/modular-code-development/master/talk.md/#1) by Radovan Bast
+- [Modular type-along/demo](https://github.com/coderefinery/modular-type-along)
