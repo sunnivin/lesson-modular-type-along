@@ -4,25 +4,22 @@ title: python exercise
 teaching: 10
 exercises: 50
 questions:
-  - How can we generalize our code development?
-  - Why should we design our code to be general ?
+  - Learn techniques for generalizing code development?
+  - What are the pros and cons for chosing general code design?
 objectives:
   - Know about pure functions (functions without side effects, functions which given same input always return same output).
   - Learn why and how to limit side effects of functions.
   - Get comfortable with the forking workflow.
 keypoints:
-  - Do a modular based code development following a template
-  - Experience difficulties in developing one-size-fit all
+  - Do a modular based code development following a template.
+  - Experience difficulties in developing one-size-fit all.
+  - Repeat basic git-commands.
 ---
 
 ## Modular type along exercise with GitHub
-
-
-## Our task
-Reflect around a typical development workflow in a small project. This example is in Python but we will try to see “through” the code and focus on the bigger picture and hopefully manage to imagine other languages in its place. For the Python experts: we will not see the most elegant Python.
+In this exercise you will incremently improve a python script for plotting together.
 
 ### Data
-
 The file temperatures.csv contains hourly air temperature measurements for the time range November 1, 2019 12:00 AM - November 30, 2019 11:59 PM for the observation station “Vantaa Helsinki-Vantaan lentoasema”.
 
 Data obtained from https://en.ilmatieteenlaitos.fi/download-observations#!/ on 2019-12-09.
@@ -51,20 +48,17 @@ plt.clf()
 ```
 
 
-## Final goal
+
+### Our task
+
 Our collaborators ask us to continue the code development to generalize the coding steps. Once we get this working for 25 measurements, our task changes to also plot the first 100 and the first 500 measurements in two additional plots.
 
+
+Reflect around a typical development workflow in a small project. This example is in Python but we will try to see “through” the code and focus on the bigger picture and hopefully manage to imagine other languages in its place. For the Python experts: we will not see the most elegant Python.
+
+
+
 ---
-
-<div class="alert alert-dismissible alert-warning">
-  <button type="button" class="close" data-dismiss="alert">&times;</button>
-  <h4 class="alert-heading">We will work with a new repository for this exercise!</h4>
-  <p>
-    For this exercise we will fork a different repository compared to earlier today.
-    Please step out of the repository and check that you fork the <b>forking</b>-workflow-exercise.
-  </p>
-</div>
-
 
 > ## Exercise preparation
 >
@@ -79,7 +73,7 @@ Our collaborators ask us to continue the code development to generalize the codi
 > - Fork the helper's newly created repository and clone the fork.
 {: .prereq}
 
-> ## Exercise: practice collaborative forking workflow
+> ## Exercise: modular type along with GitHub
 >
 > We will collaboratively develop a module based python code
 >
@@ -141,199 +135,198 @@ plt.axhline(y=mean, color='b', linestyle='--')
 plt.savefig('25.png')
 plt.clf()
 ```
-- Verify that the axis are added in the file `25.png`. Stage the changes in `imporvement.py`.
+- Run the improved python script from the top folder in the repository:
+``` shell
+$ python src/improvement.py
+```
+- Verify that the axis are added in the file `25.png`.
+- Stage and commit the changes in `imporvement.py`.
 
 
 ### **Step C**: increase the number of plotted measurements
 
-Before we do any modification, we create a new branch and switch to it: this is
-a good reflex and a good practice. Choose a branch name which is descriptive of
-its content.
+- Your supervisor now tells you to make similar kind of plots for 100 and 500 measurements as well. To avoid code duplication you decide to change the number of plots made of the measurements with a loop.
+- Update the `improvement.py` file by copying the following code with a `for`-loop over `num_measurements`:
 
-On the new branch create a new file which will hold your recipe,
-for instance `traditional_coderefinery_tacos.md` (but change the name). You can get inspired
-[here](https://github.com/sinker/tacofancy/tree/master/full_tacos). Hopefully we all use different
-file names, otherwise we will experience conflicts later (which is also interesting!).
+``` python
+import pandas as pd
+from matplotlib import pyplot as plt
 
-There is also a file called `test.py` which will automatically verify whether your recipe contains the string
-"taco" (case insensitive). This is there to slowly introduce us to automated testing.
+plt.xlabel('measurements')
+plt.ylabel('air temperature (deg C)')
 
-Once you are happy with your recipe, commit the change and in your commit
-message reference the issue which you have opened earlier with "this is my
-commit message; closes #N" (use a more descriptive message and replace N by the
-actual issue number).
+for num_measurements in [25, 100, 500]:
 
-And here is a picture of what just happened:
+    # read data from file
+    data = pd.read_csv('temperatures.csv', nrows=num_measurements)
+    temperatures = data['Air temperature (degC)']
 
-*central*: ![]({{ site.baseurl }}/img/forking/github-remote-01.svg)
+    # compute statistics
+    mean = sum(temperatures)/num_measurements
 
-*fork*: ![]({{ site.baseurl }}/img/forking/github-remote-01.svg)
+    # plot results
+    plt.plot(temperatures, 'r-')
+    plt.axhline(y=mean, color='b', linestyle='--')
+    plt.savefig(f'{num_measurements}.png')
+    plt.clf()
+```
+- Run the modified `imporvement.py` script and verify that the files `25.png`, `50.png` and `100.png` are created.
 
-*local*: ![]({{ site.baseurl }}/img/forking/github-local-02.svg)
+- Stage and commit the changes in `imporvement.py`.
 
 
-### Step D: Push your changes to the fork
+### **Step D**: abstracting the plotting part by introducing a function
+- A colleague advice you to abstract the plotting part into a function to divide the work into modules.
+- Update the `improvement.py` file by copying the following code:
 
-Now push your new branch to your fork. Your branch is probably called something else than "feature". Also verify where
-"origin" points to.
+``` python
+import pandas as pd
+from matplotlib import pyplot as plt
 
-```shell
-$ git push origin feature
+plt.xlabel('measurements')
+plt.ylabel('air temperature (deg C)')
+
+
+def plot_temperatures(temperatures):
+    plt.plot(temperatures, 'r-')
+    plt.axhline(y=mean, color='b', linestyle='--')
+    plt.savefig(f'{num_measurements}.png')
+    plt.clf()
+
+
+for num_measurements in [25, 100, 500]:
+
+    # read data from file
+    data = pd.read_csv('temperatures.csv', nrows=num_measurements)
+    temperatures = data['Air temperature (degC)']
+
+    # compute statistics
+    mean = sum(temperatures)/num_measurements
+
+    # plot results
+#   plt.plot(temperatures, 'r-')
+#   plt.axhline(y=mean, color='b', linestyle='--')
+#   plt.savefig(f'{num_measurements}.png')
+#   plt.clf()
+    plot_temperatures(temperatures)
+```
+- **Wait for the other members of the break-out room and discuss this point**:
+  - What would we expect before running this code?  (Hint: how are the variables defined?)
+  - Do you see any problems with this solution? (Hint: what would happen if the code is copy-pased into another file?)
+- Run the modified `imporvement.py` script.
+
+- Stage and commit the changes in `imporvement.py`.
+
+
+### **Step E**: small improvements
+- After looking at the script you realize that you can functionalize all the code parts of your script.
+
+- Update the `improvement.py` file by copying the following code:
+
+``` python
+import pandas as pd
+from matplotlib import pyplot as plt
+
+
+def plot_data(data, xlabel, ylabel):
+    plt.plot(data, 'r-')
+    plt.xlabel(xlabel)
+    plt.ylabel(ylabel)
+    plt.axhline(y=mean, color='b', linestyle='--')
+    plt.savefig(f'{num_measurements}.png')
+    plt.clf()
+
+
+def compute_statistics(data):
+    mean = sum(data)/num_measurements
+    return mean
+
+
+def read_data(file_name, column):
+    data = pd.read_csv(file_name, nrows=num_measurements)
+    return data[column]
+
+
+for num_measurements in [25, 100, 500]:
+
+    temperatures = read_data(file_name='temperatures.csv', column='Air temperature (degC)')
+
+    mean = compute_statistics(temperatures)
+
+    plot_data(data=temperatures, xlabel='measurements', ylabel='air temperature (deg C)')
+```
+- **Wait for the other members of the break-out room and discuss this point**:
+  - What will now happen if the functions are copy-pasted into another project/script? (Hint: how is for instance `num_measurements` declared?)
+
+- Run the modified `imporvement.py` script.
+
+- Stage and commit the changes in `imporvement.py`.
+
+
+
+### **Step F**: improve to more stateless functions
+- After digesting the material in the workshop you realize that you can do one last effort of improving your script by making your functions more stateless (aiming for pure functions here!)
+
+- Update the `improvement.py` file by copying the following code:
+
+``` python
+import pandas as pd
+from matplotlib import pyplot as plt
+import click
+
+
+def plot_data(data, mean, xlabel, ylabel, file_name):
+    plt.plot(data, "r-")
+    plt.xlabel(xlabel)
+    plt.ylabel(ylabel)
+    plt.axhline(y=mean, color="b", linestyle="--")
+    plt.savefig(file_name)
+    plt.clf()
+
+
+def compute_mean(data):
+    mean = sum(data) / len(data)
+    return mean
+
+
+def read_data(file_name, nrows, column):
+    data = pd.read_csv(file_name, nrows=nrows)
+    return data[column]
+
+
+for num_measurements in [25, 100, 500]:
+
+    temperatures = read_data(
+        file_name="temperatures.csv",
+        nrows=num_measurements,
+        column="Air temperature (degC)",
+    )
+
+    mean = compute_mean(temperatures)
+
+    plot_data(
+        data=temperatures,
+        mean=mean,
+        xlabel="measurements",
+        ylabel="air temperature (deg C)",
+        file_name=f"{num_measurements}.png",
+    )
 ```
 
-*central*: ![]({{ site.baseurl }}/img/forking/github-remote-01.svg)
+- Run the modified `imporvement.py` script.
 
-*fork*: ![]({{ site.baseurl }}/img/forking/github-remote-02.svg)
+- Stage and commit the changes in `imporvement.py`.
 
-*local*: ![]({{ site.baseurl }}/img/forking/github-local-03.svg)
-
-
-### Step E: File a pull request
-
-Then file a pull request from the branch on your fork towards the master branch on the repository where you forked from.
-
-Here is a pictorial representation for parts D and E:
-
-![]({{ site.baseurl }}/img/forking/forking-2.svg)
-
-A pull-request means: "please review my changes and if you agree, merge them with a mouse-click".
-
-Once the pull-request is accepted, the change is merged:
-
-*central*: ![]({{ site.baseurl }}/img/forking/github-remote-03.svg)
-
-*fork*: ![]({{ site.baseurl }}/img/forking/github-remote-02.svg)
-
-*local*: ![]({{ site.baseurl }}/img/forking/github-local-03.svg)
-
-Wait here until we integrate all pull requests into the central repo
-together on the big screen.
-
-Observe how the issues automatically close after the pull requests are merged
-(provided the commit messages contain [the right keywords](https://help.github.com/en/articles/closing-issues-using-keywords)).
-
-> ## (Optional) Exercise: try to send a conflicting pull request
->
-> If you complete parts A-E much earlier than others, try to send another pull request
-> where you anticipate a conflict with your first pull request.
-{: .challenge}
-
-> ## (Optional) Exercise: practice making changes to your pull request
->
-> You can do that by pushing new commits to the branch where you sent the pull
-> request from. Observe how they end up added to your pull request.
-{: .challenge}
+- Display your GitHub history and reflect around the comments you have written in  your log. Can you follow the ideas of your development in the history log?
 
 
-### Step F: Discuss and accept pull requests
+### **Step G**: pros and cons for module based code development
+**We do this step together on the main screen (in the main room)**
 
-**We do this step together on the main screen (in the main room)**. The instructor shows a submitted
-pull request, discusses what features to look at, and how to discuss and review.
-
-At the same time, helpers can review open pull requests from their exercises groups.
+Do we still agree on the initial points we wrote in the [HackMD](https://hackmd.io/GjKgLZ5jRYGPAbuPkCfGtw)?
 
 
-### Step G: Update your fork
 
-We do this part **after the contributions from all participants have been integrated**.
-
-Once this is done, practice to update your forked repo with the upstream
-changes and verify that you got the files created by other participants.
-
-Make sure that the contributions from other participants are not only on your local repository
-but really also end up in your fork.
-
-Here is a pictorial representation of this part:
-
-![]({{ site.baseurl }}/img/forking/forking-3.svg)
-
-We will discuss two solutions:
-
-
-#### Longer route
-
-- Upstream repo receives other changes (other merged pull-requests)
-- How do we get these changes to the forked repo?
-- Replace below with the repository you forked, if needed
-
-```shell
-$ git remote add upstream {{ site.forking_workflow_exercise_url }}.git
-$ git fetch upstream
-```
-
-*central*: ![]({{ site.baseurl }}/img/forking/github-remote-03.svg)
-
-*fork*: ![]({{ site.baseurl }}/img/forking/github-remote-02.svg)
-
-*local*: ![]({{ site.baseurl }}/img/forking/github-local-04.svg)
-
-```shell
-$ git checkout master
-$ git merge upstream/master
-```
-
-*central*: ![]({{ site.baseurl }}/img/forking/github-remote-03.svg)
-
-*fork*: ![]({{ site.baseurl }}/img/forking/github-remote-02.svg)
-
-*local*: ![]({{ site.baseurl }}/img/forking/github-local-05.svg)
-
-```shell
-$ git push origin master
-```
-
-*central*: ![]({{ site.baseurl }}/img/forking/github-remote-03.svg)
-
-*fork*: ![]({{ site.baseurl }}/img/forking/github-remote-04.svg)
-
-*local*: ![]({{ site.baseurl }}/img/forking/github-local-06.svg)
-
-
-#### Shorter route
-
-Remotes are aliases. We can use remote URLs directly.
-
-Here we pull from the central repo and push to our fork
-(replace with the repository you forked if needed):
-
-```shell
-$ git checkout master
-$ git pull {{ site.forking_workflow_exercise_url }}.git master
-$ git push https://github.com/user/forking-workflow-exercise.git master
-```
-
-> ## (Optional) Exercise: squash merge a pull request
->
-> If you complete this exercise much earlier than others, pair up with somebody,
-> create a new repository, fork it, and send a pull request with several
-> small commits. On the other computer accept these with "Squash and merge" and later compare the source
-> and target repositories/branches how they differ after the small commits got squashed into one.
-{: .challenge}
-
----
-
-<br>
-<br>
-<br>
-![]({{ site.baseurl }}/img/forking/remote.jpg)
-## Luke Skywalker: *You know, I did feel something. I could almost see the remote.*
-
-## Ben Kenobi: *That's good. You've taken your first step into a larger world.*
-
-(from Star Wars Episode IV - A New Hope)
-
----
-
-> ## Discussion: Always create a feature branch
->
-> - Never commit to the branch you wish to submit the pull request towards.
-> - For each pull request create a new branch.
->
-> Motivation:
-> - Limits the risk that commits get accidentally appended to an open pull request.
-> - History-rewrite (rebased and/or squashed commits) on the central repository does not lead to a diverging local default branch.
->
-> See also [this
-> blogpost](https://blog.jasonmeridth.com/posts/do-not-issue-pull-requests-from-your-master-branch/)
-> for an explanation.
-{: .discussion}
+#### Further improvements (we will see this tomorrow)
+- Are there some obvious features we have not (yet) done in the file `imporvements.py`?
+- If you are the supervisor of the student:  how would you suggest the student to perform the incremental imporvements? (Sneak-peak of the subject of tomorrow which is **code reviews**).
