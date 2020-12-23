@@ -17,7 +17,7 @@ keypoints:
 ---
 
 ## Modular type along exercise with GitHub
-In this exercise you will incremently improve a python script for plotting together.
+In this exercise you will incremently improve a python script for plotting together. It is a type-along/demo where we discuss and experience aspects of (un)modular code development. We will focus on the “why”, not on the “how”.
 
 ### Data
 The file temperatures.csv contains hourly air temperature measurements for the time range November 1, 2019 12:00 AM - November 30, 2019 11:59 PM for the observation station “Vantaa Helsinki-Vantaan lentoasema”.
