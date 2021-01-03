@@ -4,14 +4,13 @@ title: Concepts and motivation for using modular coding
 teaching: 20
 exercises: 0
 questions:
-  - Know about pure functions (functions without side effects, functions which given same input always return same output)
-  - Learn why and how to limit side effects of functions.
-  - Discuss why and how to limit side effects of data. Also discuss when mutable data may be preferable.
+  - Why and how to limit side effects of functions?
 objectives:
-  - Discuss why single-purpose functions are often preferred over multi-purpose functions.
+  - Discuss why single-purpose functions are often preferred over multi-purpose functions
+  - Know about pure functions (functions without side effects)
 keypoints:
-  - Understand the motivation for modular based coding
-  - “Global data structures” vs “local data structures”.
+  - Understand the motivation for chosing to do modular based coding
+  - “Global data structures” vs “local data structures”
 ---
 
 

@@ -1,15 +1,15 @@
 ---
 layout: episode
 title: Thoughts before doing the exercise
-teaching: 15
-exercises: 5
+teaching: 5
+exercises: 15
 questions:
   - Are there any common best practices for modular code development?
 objectives:
-  - Discuss best practices with collegues.
-  - Introduce a a common strategy for code development.
+  - Discuss best practices for code development with collegues
+  - Introduce a common strategy for code development
 keypoints:
-  - Common reflections around code development.
+  - Common reflections around code development
 ---
 
 
@@ -19,7 +19,7 @@ keypoints:
 
 > ## Discussion: Best practice for modular coding
 >
-> We share these questions in a common [HackMD](https://hackmd.io/GjKgLZ5jRYGPAbuPkCfGtw) and we wait until we have sufficiently many answers to question 1. But we also encourage answering other questions which we revisit at the end of the demo.
+> We share these questions in a common [HackMD](https://hackmd.io/GjKgLZ5jRYGPAbuPkCfGtw) and we wait until we have sufficiently many answers to question 1.
 > ### Questions:
 > > 1. What does “modular code development” mean for you?
 > > 2. What best practices can you recommend to arrive at well structured, modular code in your favourite programming language?

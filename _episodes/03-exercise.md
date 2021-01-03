@@ -4,20 +4,19 @@ title: python exercise
 teaching: 10
 exercises: 50
 questions:
-  - Learn techniques for generalizing code development
-  - What are the pros and cons for chosing general code design?
+  - Learn techniques for a generalized code development
+  - What are the pros and cons for chosing a general code design?
 objectives:
-  - Know about pure functions (functions without side effects, functions which given same input always return same output).
-  - Learn why and how to limit side effects of functions.
-  - Get comfortable with the forking workflow.
+  - Do a modular based code development following a template
+  - Get comfortable with the forking workflow
 keypoints:
-  - Do a modular based code development following a template.
-  - Experience difficulties in developing one-size-fit all strategy.
-  - Repeat basic git-commands.
+  - Experience difficulties in developing one-size-fit all strategy
+  - Repeat basic git-commands
+  - Reflect around a typical development workflow in a small project
 ---
 
-## Modular type along exercise with GitHub
-In this exercise you will incremently improve a python script for plotting together. It is a type-along/demo where we discuss and experience aspects of (un)modular code development. We will focus on the “why”, not on the “how”.
+## Modular exercise with GitHub and Python
+In this exercise you will incremently improve a python script for plotting some data together. It is a type-along/demo where we discuss and experience aspects of (un)modular code development. We will focus on the “why”, not on the “how”.
 
 ### Data
 The file temperatures.csv contains hourly air temperature measurements for the time range November 1, 2019 12:00 AM - November 30, 2019 11:59 PM for the observation station “Vantaa Helsinki-Vantaan lentoasema”.
@@ -53,8 +52,7 @@ plt.clf()
 
 Our collaborators ask us to continue the code development to generalize the coding steps. Once we get this working for 25 measurements, our task changes to also plot the first 100 and the first 500 measurements in two additional plots.
 
-
-Reflect around a typical development workflow in a small project. This example is in Python but we will try to see “through” the code and focus on the bigger picture and hopefully manage to imagine other languages in its place. For the Python experts: we will not see the most elegant Python.
+This example is in Python but we will try to see “through” the code and focus on the bigger picture and hopefully manage to imagine other languages in its place. For the Python experts: we will not see the most elegant Python.
 
 
 
