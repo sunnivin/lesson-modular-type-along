@@ -1,6 +1,6 @@
 ---
 layout: episode
-title: thoughts after the exercise
+title: Thoughts after the exercise
 teaching: 5
 exercises: 15
 questions:

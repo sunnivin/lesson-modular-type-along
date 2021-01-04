@@ -1,6 +1,6 @@
 ---
 layout: episode
-title: python exercise
+title: Modular exercise
 teaching: 10
 exercises: 50
 questions:

@@ -1,6 +1,6 @@
 ---
 layout: episode
-title: thoughts before the exercise
+title: Thoughts before the exercise
 teaching: 5
 exercises: 15
 questions:

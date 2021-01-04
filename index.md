@@ -6,6 +6,7 @@ permalink: /
 # Modular based code development
 
 <br>
+
 ![](/img/index/goto_spagetti.png)
 
 *Image: taken from [i-programming](https://www.i-programmer.info/programming/theory/1332-goto-spaghetti-and-velociraptor.html)*
