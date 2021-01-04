@@ -5,18 +5,18 @@ teaching: 10
 exercises: 50
 questions:
   - Learn techniques for a generalized code development
-  - What are the pros and cons for chosing a general code design?
+  - What are the pros and cons of choosing a general code design?
 objectives:
   - Do a modular based code development following a template
   - Get comfortable with the forking workflow
 keypoints:
-  - Experience difficulties in developing one-size-fit all strategy
+  - Experience difficulties in developing one-size-fit-all strategy
   - Repeat basic git-commands
-  - Reflect around a typical development workflow in a small project
+  - Reflect on a typical development workflow in a small project
 ---
 
 ## Modular exercise with GitHub and Python
-In this exercise you will incremently improve a python script for plotting some data together. It is a type-along/demo where we discuss and experience aspects of (un)modular code development. We will focus on the “why”, not on the “how”.
+In this exercise, you will incrementally improve a python script for plotting some data together. It is a type-along/demo where we discuss and experience aspects of (un)modular code development. We will focus on the “why”, not on the “how”.
 
 ### Data
 The file temperatures.csv contains hourly air temperature measurements for the time range November 1, 2019 12:00 AM - November 30, 2019 11:59 PM for the observation station “Vantaa Helsinki-Vantaan lentoasema”.
@@ -52,7 +52,7 @@ plt.clf()
 
 Our collaborators ask us to continue the code development to generalize the coding steps. Once we get this working for 25 measurements, our task changes to also plot the first 100 and the first 500 measurements in two additional plots.
 
-This example is in Python but we will try to see “through” the code and focus on the bigger picture and hopefully manage to imagine other languages in its place. For the Python experts: we will not see the most elegant Python.
+This example is in Python but we will try to see “through” the code and focus on the bigger picture and hopefully manage to imagine other languages in their place. For the Python experts: we will not see the most elegant Python.
 
 
 
@@ -64,7 +64,7 @@ This example is in Python but we will try to see “through” the code and focu
 > - Create an exercise repository by
 >   [generating from a template](https://help.github.com/en/articles/creating-a-repository-from-a-template)
 >   using this template: <https://github.com/sunnivin/module-based-type-along>
-> - In this case we **do not add collaborators** to the repository (this is the point of this example).
+> - In this case, we **do not add collaborators** to the repository (this is the point of this example).
 > - Share the link to the newly created repository in the shared document with your group.
 >
 > **Learners in breakout-rooms**:
@@ -136,12 +136,12 @@ plt.clf()
 $ python src/improvement.py
 ```
 - Verify that the axis are added in the file `25.png`.
-- Stage and commit the changes in `imporvement.py`.
+- Stage and commit the changes in `improvement.py`.
 
 
 ### **Step C**: increase the number of plotted measurements
 
-- Your supervisor now tells you to make similar kind of plots for 100 and 500 measurements as well. To avoid code duplication you decide to change the number of plots made of the measurements with a loop.
+- Your supervisor now tells you to make similar kinds of plots for 100 and 500 measurements as well. To avoid code duplication you decide to change the number of plots made of the measurements with a loop.
 - Update the `improvement.py` file by copying the following code with a `for`-loop over `num_measurements`:
 
 ``` python
@@ -166,13 +166,13 @@ for num_measurements in [25, 100, 500]:
     plt.savefig(f'{num_measurements}.png')
     plt.clf()
 ```
-- Run the modified `imporvement.py` script and verify that the files `25.png`, `50.png` and `100.png` are created.
+- Run the modified `improvement.py` script and verify that the files `25.png`, `50.png` and `100.png` are created.
 
-- Stage and commit the changes in `imporvement.py`.
+- Stage and commit the changes in `improvement.py`.
 
 
 ### **Step D**: abstracting the plotting part by introducing a function
-- A colleague advice you to abstract the plotting part into a function to divide the work into modules.
+- A colleague advises you to abstract the plotting part into a function to divide the work into modules.
 - Update the `improvement.py` file by copying the following code:
 
 ``` python
@@ -208,10 +208,10 @@ for num_measurements in [25, 100, 500]:
 ```
 - **Wait for the other members of the break-out room and discuss this point**:
   - What would we expect before running this code?  (Hint: how are the variables defined?)
-  - Do you see any problems with this solution? (Hint: what would happen if the code is copy-pased into another file?)
-- Run the modified `imporvement.py` script.
+  - Do you see any problems with this solution? (Hint: what would happen if the code is copy-pasted into another file?)
+- Run the modified `improvement.py` script.
 
-- Stage and commit the changes in `imporvement.py`.
+- Stage and commit the changes in `improvement.py`.
 
 
 ### **Step E**: small improvements
@@ -254,9 +254,9 @@ for num_measurements in [25, 100, 500]:
 - **Wait for the other members of the break-out room and discuss this point**:
   - What will now happen if the functions are copy-pasted into another project/script? (Hint: how is for instance `num_measurements` declared?)
 
-- Run the modified `imporvement.py` script.
+- Run the modified `improvement.py` script.
 
-- Stage and commit the changes in `imporvement.py`.
+- Stage and commit the changes in `improvement.py`.
 
 
 
@@ -309,20 +309,8 @@ for num_measurements in [25, 100, 500]:
     )
 ```
 
-- Run the modified `imporvement.py` script.
+- Run the modified `improvement.py` script.
 
-- Stage and commit the changes in `imporvement.py`.
+- Stage and commit the changes in `improvement.py`.
 
 - Display your GitHub history and reflect around the comments you have written in  your log. Can you follow the ideas of your development in the history log?
-
-
-### **Step G**: pros and cons for module based code development
-**We do this step together on the main screen (in the main room)**
-
-Do we still agree on the initial points we wrote in the [HackMD](https://hackmd.io/GjKgLZ5jRYGPAbuPkCfGtw)?
-
-
-
-#### Further improvements (we will see this tomorrow)
-- Are there some obvious features we have not (yet) done in the file `imporvements.py`?
-- If you are the supervisor of the student:  how would you suggest the student to perform the incremental imporvements? (Sneak-peak of the subject of tomorrow which is **code reviews**).

@@ -14,13 +14,13 @@ permalink: /
 
 ## A standard for the program flow
 
-We have learned how to make a git repository for a single person and share it with several people. In this lesson we will use this knowledge to do a modular-based code development. We will discover the pros of dividing our code into functions through a simple python script.
+We have learned how to make a git repository for a single person and share it with several people. In this lesson, we will use this knowledge to do modular-based code development. We will discover the pros of dividing our code into functions through a simple python script.
 
 
 ### Questions we will reflect upon during this lesson:
 
 - How important is it to follow a standard program flow for yourself?
-- How important is it to follow a standard program flow your collaborators?
+- How important is it to follow a standard program flow for your collaborators?
 - 'Standard' choices of structure in code development
 
 
@@ -31,9 +31,9 @@ We have learned how to make a git repository for a single person and share it wi
 >
 > We will do this exercise on [GitHub](https://github.com) but also
 > [GitLab](https://gitlab.com) and [Bitbucket](https://bitbucket.org) allow
-> similar workflows and basically everything that we will discuss is transferable. With
+> similar workflows and basically, everything that we will discuss is transferable. With
 > this material and these exercises we do not endorse the company
-> [GitHub](https://github.com). We have chosen to demonstrate a number of
+> [GitHub](https://github.com). We have chosen to demonstrate several
 > concepts using examples with [GitHub](https://github.com) because it is
 > currently the most popular web platform for hosting Git repositories and the chance is high
 > that you will interact with [GitHub](https://github.com)-based repositories even if you
