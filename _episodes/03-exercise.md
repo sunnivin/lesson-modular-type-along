@@ -92,19 +92,22 @@ This example is in Python but we will try to see “through” the code and focu
 
 Wait for the helper to share the repository for this exercise in the group chat.
 - Fork the helper's repository and  create a local clone.
-- cd into the folder where the local repository is and create the branch `module-based-development`.
-- Run the initial python script from the top folder in the repository:
+
+- cd into the folder where the local repository is and create the branch `module-based-development`. Through all this exercise the variable $HOME is referring to the top folder of the repository.
+
+- Run the initial python script from the $HOME folder:
 ``` shell
 $ python src/initial.py
 ```
 
-- Verify that the file 25.png is created in your top folder.
+- Verify that the file `25.png` is created in $HOME.
 
 
 ### **Step B**: improve the plot
 Your supervisor ask you to improve the plot by adding labels to the plot.
 
-- Create the file `src/improvement.py` and add it to the repository.
+- Create a file `src/improvement.py` and add it to the repository.
+
 - Add labels to the plot by adding the following lines to `improvement.py`:
 
 ``` python
@@ -119,7 +122,7 @@ plt.ylabel('air temperature (deg C)')
 num_measurements = 25
 
 # read data from file
-data = pd.read_csv('temperatures.csv', nrows=num_measurements)
+data = pd.read_csv('data/temperatures.csv', nrows=num_measurements)
 temperatures = data['Air temperature (degC)']
 
 # compute statistics
@@ -136,13 +139,14 @@ plt.clf()
 $ python src/improvement.py
 ```
 - Verify that the axis are added in the file `25.png`.
+
 - Stage and commit the changes in `improvement.py`.
 
 
 ### **Step C**: increase the number of plotted measurements
+Your supervisor now tells you to make similar kinds of plots for 100 and 500 measurements as well. Since you know that code duplication should be avoided you decide to change the number of plots made of the measurements with a loop.
 
-- Your supervisor now tells you to make similar kinds of plots for 100 and 500 measurements as well. To avoid code duplication you decide to change the number of plots made of the measurements with a loop.
-- Update the `improvement.py` file by copying the following code with a `for`-loop over `num_measurements`:
+- Update `improvement.py` by copying in the following code.  The plots will now be generated with a for-loop over the variable `num_measurements`:
 
 ``` python
 import pandas as pd
@@ -154,7 +158,7 @@ plt.ylabel('air temperature (deg C)')
 for num_measurements in [25, 100, 500]:
 
     # read data from file
-    data = pd.read_csv('temperatures.csv', nrows=num_measurements)
+    data = pd.read_csv('data/temperatures.csv', nrows=num_measurements)
     temperatures = data['Air temperature (degC)']
 
     # compute statistics
@@ -163,37 +167,36 @@ for num_measurements in [25, 100, 500]:
     # plot results
     plt.plot(temperatures, 'r-')
     plt.axhline(y=mean, color='b', linestyle='--')
-    plt.savefig(f'{num_measurements}.png')
+    plt.savefig(str(num_measurements)+'.png')
     plt.clf()
 ```
-- Run the modified `improvement.py` script and verify that the files `25.png`, `50.png` and `100.png` are created.
+- Run `improvement.py` again and verify that the files `25.png`, `100.png` and `500.png` are created. Why are the axis labels only present for the file `25.png`?
 
 - Stage and commit the changes in `improvement.py`.
 
 
 ### **Step D**: abstracting the plotting part by introducing a function
-- A colleague advises you to abstract the plotting part into a function to divide the work into modules.
+A colleague advises you to abstract the plotting part into a function to divide the work into modules.
+
 - Update the `improvement.py` file by copying the following code:
 
 ``` python
 import pandas as pd
 from matplotlib import pyplot as plt
 
-plt.xlabel('measurements')
-plt.ylabel('air temperature (deg C)')
-
-
 def plot_temperatures(temperatures):
     plt.plot(temperatures, 'r-')
     plt.axhline(y=mean, color='b', linestyle='--')
-    plt.savefig(f'{num_measurements}.png')
+    plt.xlabel('measurements')
+    plt.ylabel('air temperature (deg C)')
+    plt.savefig(str(num_measurements)+'.png')
     plt.clf()
 
 
 for num_measurements in [25, 100, 500]:
 
     # read data from file
-    data = pd.read_csv('temperatures.csv', nrows=num_measurements)
+    data = pd.read_csv('data/temperatures.csv', nrows=num_measurements)
     temperatures = data['Air temperature (degC)']
 
     # compute statistics
@@ -209,13 +212,15 @@ for num_measurements in [25, 100, 500]:
 - **Wait for the other members of the break-out room and discuss this point**:
   - What would we expect before running this code?  (Hint: how are the variables defined?)
   - Do you see any problems with this solution? (Hint: what would happen if the code is copy-pasted into another file?)
+
+
 - Run the modified `improvement.py` script.
 
 - Stage and commit the changes in `improvement.py`.
 
 
 ### **Step E**: small improvements
-- After looking at the script you realize that you can functionalize all the code parts of your script.
+After looking at the script you realize that you can functionalize all the parts of your script and use a for-loop.
 
 - Update the `improvement.py` file by copying the following code:
 
@@ -229,7 +234,7 @@ def plot_data(data, xlabel, ylabel):
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
     plt.axhline(y=mean, color='b', linestyle='--')
-    plt.savefig(f'{num_measurements}.png')
+    plt.savefig(str(num_measurements)+'.png')
     plt.clf()
 
 
@@ -245,7 +250,7 @@ def read_data(file_name, column):
 
 for num_measurements in [25, 100, 500]:
 
-    temperatures = read_data(file_name='temperatures.csv', column='Air temperature (degC)')
+    temperatures = read_data(file_name='data/temperatures.csv', column='Air temperature (degC)')
 
     mean = compute_statistics(temperatures)
 
@@ -261,14 +266,13 @@ for num_measurements in [25, 100, 500]:
 
 
 ### **Step F**: improve to more stateless functions
-- After digesting the material in the workshop you realize that you can do one last effort of improving your script by making your functions more stateless (aiming for pure functions here!)
+After digesting the material in this workshop you realize that you can do one last effort of improving your script by making your functions more stateless (aiming for pure functions here!)
 
 - Update the `improvement.py` file by copying the following code:
 
 ``` python
 import pandas as pd
 from matplotlib import pyplot as plt
-import click
 
 
 def plot_data(data, mean, xlabel, ylabel, file_name):
@@ -293,7 +297,7 @@ def read_data(file_name, nrows, column):
 for num_measurements in [25, 100, 500]:
 
     temperatures = read_data(
-        file_name="temperatures.csv",
+        file_name="data/temperatures.csv",
         nrows=num_measurements,
         column="Air temperature (degC)",
     )
@@ -305,7 +309,7 @@ for num_measurements in [25, 100, 500]:
         mean=mean,
         xlabel="measurements",
         ylabel="air temperature (deg C)",
-        file_name=f"{num_measurements}.png",
+        file_name=str(num_measurements)+'.png',
     )
 ```
 
@@ -313,4 +317,4 @@ for num_measurements in [25, 100, 500]:
 
 - Stage and commit the changes in `improvement.py`.
 
-- Display your GitHub history and reflect around the comments you have written in  your log. Can you follow the ideas of your development in the history log?
+- Display your GitHub history and reflect around the comments you have written in  your log. Would you be able to follow the ideas of your history log if you were just reading the commit messages?
