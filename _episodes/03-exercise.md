@@ -58,19 +58,6 @@ This example is in Python but we will try to see “through” the code and focu
 
 ---
 
-> ## Exercise preparation
->
-> **Helpers in breakout-rooms**:
-> - Create an exercise repository by
->   [generating from a template](https://help.github.com/en/articles/creating-a-repository-from-a-template)
->   using this template: <https://github.com/sunnivin/module-based-type-along>
-> - In this case, we **do not add collaborators** to the repository (this is the point of this example).
-> - Share the link to the newly created repository in the shared document with your group.
->
-> **Learners in breakout-rooms**:
-> - Fork the helper's newly created repository and clone the fork so you can work on your global copy.
-{: .prereq}
-
 > ## Exercise: modular type along with GitHub
 >
 > We will collaboratively develop a module based python code
@@ -87,11 +74,9 @@ This example is in Python but we will try to see “through” the code and focu
 
 
 
-### **Step A**: Fork and clone
+### **Step A**: Clone and check
 
-
-Wait for the helper to share the repository for this exercise in the group chat.
-- Fork the helper's repository and  create a local clone.
+- Create a local clone of [this](https://github.com/sunnivin/module-based-type-along) repository.
 
 - cd into the folder where the local repository is and create the branch `module-based-development`. Through all this exercise the variable $HOME is referring to the top folder of the repository.
 
