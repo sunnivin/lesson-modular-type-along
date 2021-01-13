@@ -9,6 +9,7 @@ questions:
 objectives:
   - Do a modular based code development following a template
   - Get comfortable with the forking workflow
+  - Write good commit messages
 keypoints:
   - Experience difficulties in developing one-size-fit-all strategy
   - Repeat basic git-commands
@@ -17,6 +18,8 @@ keypoints:
 
 ## Modular exercise with GitHub and Python
 In this exercise, you will incrementally improve a python script for plotting some data together. It is a type-along/demo where we discuss and experience aspects of (un)modular code development. We will focus on the “why”, not on the “how”.
+
+**NB** This exercise assumes that you are already familiar with how to use git as an individual or collaboratively through the web-interface. Because this is a slightly advanced lesson the commands you need to type during the exercise is deliberately not explicit for each step.
 
 ### Data
 The file temperatures.csv contains hourly air temperature measurements for the time range November 1, 2019 12:00 AM - November 30, 2019 11:59 PM for the observation station “Vantaa Helsinki-Vantaan lentoasema”.
@@ -125,7 +128,7 @@ $ python src/improvement.py
 ```
 - Verify that the axis are added in the file `25.png`.
 
-- Stage and commit the changes in `improvement.py`.
+- Stage and commit the changes in `improvement.py`. You will be asked to do this in each step so you can inspect your (hopefully) beautiful log in the last step of the exercise.
 
 
 ### **Step C**: increase the number of plotted measurements
