@@ -70,9 +70,7 @@ This example is in Python but we will try to see “through” the code and focu
 > - Learn the advantages of modular based coding.
 >
 > Exercise:
-> - Helper prepares an exercise repository (see above; this will take 5-10 minutes).
 > - **The exercise group works on steps A-F** (50 minutes).
-> - After step F you can return to the main room. Please ask questions.
 {: .challenge}
 
 
