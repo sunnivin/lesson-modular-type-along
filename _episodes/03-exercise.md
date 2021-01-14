@@ -2,7 +2,7 @@
 layout: episode
 title: Modular exercise
 teaching: 10
-exercises: 50
+exercises: 45
 questions:
   - Learn techniques for a generalized code development
   - What are the pros and cons of choosing a general code design?
@@ -71,6 +71,7 @@ This example is in Python but we will try to see “through” the code and focu
 >
 > Exercise:
 > - **The exercise group works on steps A-F** (50 minutes).
+> - Python3 and the libraries matplotlib and pandas need to be installed on your computer to run the example scripts.
 {: .challenge}
 
 
@@ -197,7 +198,7 @@ for num_measurements in [25, 100, 500]:
 ```
 - **Wait for the other members of the break-out room and discuss this point**:
   - What would we expect before running this code?  (Hint: how are the variables defined?)
-  - Do you see any problems with this solution? (Hint: what would happen if the code is copy-pasted into another file?)
+  - Do you see any problems with this solution? (Hint: what would happen if the functions in the file are copy-pasted into another file?)
 
 
 - Run the modified `improvement.py` script.
